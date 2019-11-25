@@ -1,0 +1,42 @@
+project_name: notifail
+release:
+  github:
+    owner: kyoh86
+    name: notifail
+brew:
+  install: |
+    bin.install "notifail"
+    man1.install "notifail.1"
+  github:
+    owner: kyoh86
+    name: homebrew-tap
+  folder: Formula
+  homepage: https://github.com/kyoh86/notifail
+  description: Notify failure over OS notification drivers
+builds:
+- goos:
+  - linux
+  - darwin
+  goarch:
+  - amd64
+  - "386"
+  main: .
+  ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
+  binary: notifail
+  hooks:
+    pre: make man
+archive:
+  format: tar.gz
+  name_template: "{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+  files:
+  - licence*
+  - LICENCE*
+  - license*
+  - LICENSE*
+  - readme*
+  - README*
+  - changelog*
+  - CHANGELOG*
+  - notifail.1
+snapshot:
+  name_template: SNAPSHOT-{{ .Commit }}
