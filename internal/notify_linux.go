@@ -8,14 +8,14 @@ import (
 	"github.com/skratchdot/open-golang/open"
 )
 
-func Notify(level Level, timeout int, title, message, detailFilename string) error {
+func Notify(level Level, timeout int, title, message, detail string) error {
 	conn, err := dbus.SessionBus()
 	if err != nil {
 		return fmt.Errorf("failed to connect session BUS %w", err)
 	}
 
 	buttons := []string{"ok", "OK"} // tuples of (action_key, label)
-	if detailFilename != "" {
+	if detail != "" {
 		buttons = []string{"details", "Details", "ok", "OK"}
 	}
 
@@ -46,7 +46,7 @@ func Notify(level Level, timeout int, title, message, detailFilename string) err
 		action := <-actions
 		switch action.ActionKey {
 		case "details":
-			open.Start(detailFilename)
+			open.Start(detail)
 		}
 	}()
 
