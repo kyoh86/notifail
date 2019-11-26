@@ -11,4 +11,4 @@ jobs:
       - uses: reviewdog/action-golangci-lint@v1
         with:
           level: info
-          github_token: ${{ secrets.github_token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
