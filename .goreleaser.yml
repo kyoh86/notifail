@@ -3,8 +3,8 @@ release:
   github:
     owner: kyoh86
     name: notifail
-brew:
-  install: |
+brews:
+- install: |
     bin.install "notifail"
     man1.install "notifail.1"
   github:
@@ -25,7 +25,8 @@ builds:
   binary: notifail
   hooks:
     pre: make man
-archive:
+archives:
+- id: gzip
   format: tar.gz
   name_template: "{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
   files:
