@@ -46,7 +46,9 @@ func Notify(level Level, timeout int, title, message, detailFilename string) err
 		action := <-actions
 		switch action.ActionKey {
 		case "details":
-			open.Start(detailFilename)
+			if err := open.Start(detailFilename); err != nil {
+				panic(err)
+			}
 		}
 	}()
 

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"os"
 
 	"github.com/alecthomas/kingpin"
@@ -30,5 +31,7 @@ func main() {
 	app.Arg("message", "Notification Message").Required().StringVar(&flag.Message)
 	kingpin.MustParse(app.Parse(os.Args[1:]))
 
-	internal.Notify(flag.Level, flag.Timeout, flag.Title, flag.Message, flag.DetailFilename)
+	if err := internal.Notify(flag.Level, flag.Timeout, flag.Title, flag.Message, flag.DetailFilename); err != nil {
+		log.Fatal(err)
+	}
 }
