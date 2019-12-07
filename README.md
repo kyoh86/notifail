@@ -2,6 +2,9 @@
 
 Notify failure over OS notification drivers
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/kyoh86/notifail)](https://goreportcard.com/report/github.com/kyoh86/notifail)
+[![Coverage Status](https://img.shields.io/codecov/c/github/kyoh86/notifail.svg)](https://codecov.io/gh/kyoh86/notifail)
+
 ## Install
 
 ```
