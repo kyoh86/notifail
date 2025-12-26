@@ -29,9 +29,6 @@ jobs:
       - uses: actions/checkout@v6
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v9
-        with:
-          # Required: the version of golangci-lint is required and must be specified without patch version: we always use the latest patch version.
-          version: v1.32
 
   test:
     runs-on: ubuntu-latest
@@ -61,7 +58,7 @@ jobs:
       - name: release (dry-run)
         uses: goreleaser/goreleaser-action@v6
         with:
-          args: release --clean --skip-publish --snapshot
+          args: release --clean --skip publish --snapshot
 
   cover:
     runs-on: ubuntu-latest
