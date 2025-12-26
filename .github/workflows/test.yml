@@ -55,6 +55,7 @@ jobs:
         with:
           name: repository
           path: .
+      - run: ls -la
       - name: release (dry-run)
         uses: goreleaser/goreleaser-action@v6
         with:
