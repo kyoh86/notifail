@@ -1,5 +1,6 @@
 # yaml-language-server: $schema=https://goreleaser.com/static/schema.json
 
+version: 2
 project_name: notifail
 builds:
   - id: default
@@ -16,17 +17,6 @@ builds:
     hooks:
       post:
         - make man VERSION={{.Version}} COMMIT={{.ShortCommit}} DATE={{.Date}}
-brews:
-  - install: |
-      bin.install "notifail"
-      man1.install Dir.glob('notifail*.1')
-    tap:
-      owner: kyoh86
-      name: homebrew-tap
-    folder: Formula
-    homepage: https://github.com/kyoh86/notifail
-    description: Notify failure over OS notification drivers
-    license: MIT
 nfpms:
   - builds:
       - default
@@ -41,9 +31,6 @@ nfpms:
 archives:
   - id: gzip
     format: tar.gz
-    format_overrides:
-      - goos: windows
-        format: zip
     files:
       - licence*
       - LICENCE*
