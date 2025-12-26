@@ -21,6 +21,7 @@ jobs:
         with:
           name: repository
           path: .
+          include-hidden-files: true
 
   lint:
     runs-on: ubuntu-latest
@@ -55,7 +56,6 @@ jobs:
         with:
           name: repository
           path: .
-      - run: ls -la
       - name: release (dry-run)
         uses: goreleaser/goreleaser-action@v6
         with:
